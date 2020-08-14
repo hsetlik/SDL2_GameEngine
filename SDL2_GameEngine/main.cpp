@@ -7,9 +7,21 @@
 //
 
 #include <iostream>
+#include "GameGlass.hpp"
+
+Game *game= nullptr;
+const int windowWidth = 1200;
+const int windowHeight = 650;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    game = new Game();
+    //grid = new Grid();
+    game-> init("Title", 600, 600, windowWidth, windowHeight, false);
+    while(game->running()){
+        game->handleEvents();
+        game->update();
+        game->render();
+    }
+    game->clean();
     return 0;
 }
